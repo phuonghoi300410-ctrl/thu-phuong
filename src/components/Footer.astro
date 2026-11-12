@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, SOCIAL_LINKS } from '../consts';
 const year = new Date().getFullYear();
 ---
 
@@ -10,7 +10,7 @@ const year = new Date().getFullYear();
 			<button class="link-btn" id="autoBtn" type="button" hidden>Về tự động theo giờ</button>
 		</p>
 		<nav aria-label="Liên kết cuối trang">
-			<a href="/rss.xml">RSS</a><a href="/blog/">Bài viết</a><a href="/about/">Giới thiệu</a>
+			<a href="/rss.xml">RSS</a><a href="/blog/">Bài viết</a><a href="/about/">Giới thiệu</a>{SOCIAL_LINKS.map((s) => <a href={s.href} target="_blank" rel="me noopener">{s.label}</a>)}
 		</nav>
 	</div>
 </footer>

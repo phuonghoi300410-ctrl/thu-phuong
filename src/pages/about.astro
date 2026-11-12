@@ -1,7 +1,30 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
+import { SOCIAL_LINKS, TOPICS } from '../consts';
 ---
 
 <Layout title="Giới thiệu" description="Đôi dòng về Thu Phương và blog này.">
-	<p>Trang giới thiệu đang được viết. Thu Phương sẽ cập nhật nội dung tại đây.</p>
+	<p>
+		Mình là Thu Phương, một người mẹ có con đang học cấp 1 và cấp 2. Công việc hằng ngày của mình gắn
+		với giáo dục và các công cụ AI.
+	</p>
+	<p>
+		Blog này là nơi mình ghi lại những điều học được khi đồng hành cùng con trong lúc AI đã có mặt ở
+		bàn học, và những cách dùng AI giúp công việc gọn hơn. Mình viết ngắn, rõ, và chỉ viết điều mình
+		đã thử.
+	</p>
+	<h2>Blog viết về</h2>
+	<ul>
+		{TOPICS.map((t) => <li>{t.name}</li>)}
+	</ul>
+	<h2>Kết nối với Thu Phương</h2>
+	<ul>
+		{
+			SOCIAL_LINKS.map((s) => (
+				<li>
+					<a href={s.href} target="_blank" rel="me noopener">{s.label}</a>
+				</li>
+			))
+		}
+	</ul>
 </Layout>
