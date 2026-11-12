@@ -4,7 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE, TOPICS, topicOf } from '../consts';
+import { SGK_APPS, SITE_DESCRIPTION, SITE_TITLE, TOPICS, topicOf } from '../consts';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -35,7 +35,7 @@ const countOf = (slug: string) => posts.filter((p) => p.data.topic === slug).len
 					</p>
 					<div class="cta">
 						<a class="btn btn-main" href="#h-noi-bat">Đọc bài mới nhất</a>
-						<a class="btn btn-line" href="/about/">Về Thu Phương</a>
+						<a class="btn btn-line" href="#ung-dung-sgk">Ứng dụng SGK</a>
 					</div>
 				</div>
 			</section>
@@ -76,6 +76,42 @@ const countOf = (slug: string) => posts.filter((p) => p.data.topic === slug).len
 					</section>
 				)
 			}
+
+			<section class="section" id="ung-dung-sgk" aria-labelledby="h-sgk">
+				<div class="wrap">
+					<div class="section-head">
+						<h2 id="h-sgk">Ứng dụng SGK Số</h2>
+						<a href="/apps/">Xem tất cả ứng dụng →</a>
+					</div>
+					<div class="sgk-grid">
+						{
+							SGK_APPS.map((app) => (
+								<a class="sgk-card" href={app.href} target="_blank" rel="noopener">
+									<div>
+										<div class="sgk-head">
+											<span class="sgk-tag">
+												<span class="pulse-dot"></span>
+												{app.grade}
+											</span>
+											<span class="sgk-spec">KẾT NỐI TRI THỨC</span>
+										</div>
+										<h3 class="sgk-title">{app.title}</h3>
+										<p class="sgk-desc">{app.description}</p>
+									</div>
+									<div class="sgk-meta">
+										<span class="sgk-highlight">
+											<i>📐</i> {app.highlight}
+										</span>
+										<span class="sgk-btn">
+											Mở app ↗
+										</span>
+									</div>
+								</a>
+							))
+						}
+					</div>
+				</div>
+			</section>
 
 			<section class="section" aria-labelledby="h-chu-de">
 				<div class="wrap">

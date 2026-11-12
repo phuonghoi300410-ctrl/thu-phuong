@@ -5,6 +5,7 @@ const path = Astro.url.pathname;
 const links = [
 	{ href: '/', text: 'Trang chủ', on: path === '/' },
 	{ href: '/blog/', text: 'Bài viết', on: path.startsWith('/blog') },
+	{ href: '/apps/', text: 'App SGK', on: path.startsWith('/apps') },
 	{ href: '/about/', text: 'Giới thiệu', on: path.startsWith('/about') },
 ];
 ---

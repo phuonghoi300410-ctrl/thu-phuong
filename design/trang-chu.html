@@ -308,6 +308,31 @@ a { color: inherit; text-decoration: none; transition: all .2s ease; }
 .feature-body h3 a:hover { color: var(--accent); }
 .feature-body p:not(.label):not(.meta) { font-size: 18px; color: var(--muted); line-height: 1.7; }
 
+/* SGK Apps */
+.sgk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sgk-card {
+  border-radius: var(--radius); padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between;
+  backdrop-filter: blur(16px); border: 1px solid var(--line); background: var(--surface-card);
+  transition: all .35s cubic-bezier(0.2, 0.8, 0.2, 1); position: relative; overflow: hidden; box-shadow: var(--card-shadow); text-decoration: none;
+}
+.sgk-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--tech-gradient); opacity: 0.6; transition: opacity .3s ease; }
+.sgk-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: var(--glow-shadow), var(--card-shadow); }
+.sgk-card:hover::before { opacity: 1; }
+.sgk-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.sgk-tag {
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 12px; border-radius: 999px; background: rgba(229, 195, 120, 0.1); color: var(--accent); border: 1px solid rgba(229, 195, 120, 0.25);
+}
+[data-theme="light"] .sgk-tag { background: rgba(179, 134, 46, 0.08); color: var(--accent); border-color: rgba(179, 134, 46, 0.2); }
+.sgk-spec { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--muted-light); text-transform: uppercase; }
+.sgk-title { font-size: 22px; font-weight: 700; color: var(--text-pure); margin: 0 0 12px; line-height: 1.3; letter-spacing: -0.015em; transition: color .2s ease; }
+.sgk-card:hover .sgk-title { color: var(--accent); }
+.sgk-desc { font-size: 15.5px; color: var(--muted); line-height: 1.65; margin: 0 0 20px; flex-grow: 1; }
+.sgk-meta { padding-top: 18px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; font-size: 13.5px; }
+.sgk-highlight { color: var(--muted); font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+.sgk-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--accent); transition: transform .2s ease; }
+.sgk-card:hover .sgk-btn { transform: translateX(4px); color: var(--text-pure); }
+
 /* Topics */
 .topics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .topic {
@@ -389,6 +414,7 @@ a { color: inherit; text-decoration: none; transition: all .2s ease; }
   .feature { grid-template-columns: 1fr; }
   .feature-art { min-height: 260px; }
   .feature-body { padding: 32px 24px; }
+  .sgk-grid { grid-template-columns: 1fr; gap: 16px; }
   .topics { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .post { grid-template-columns: 1fr; gap: 8px; padding: 24px 12px; }
   .post .tag { justify-self: start; margin-top: 4px; }
@@ -408,6 +434,7 @@ a { color: inherit; text-decoration: none; transition: all .2s ease; }
     <nav class="nav" aria-label="Điều hướng chính">
       <a href="#" aria-current="page">Trang chủ</a>
       <a href="#bai-moi">Bài viết</a>
+      <a href="#ung-dung-sgk">App SGK</a>
       <a href="#chu-de">Chủ đề</a>
       <a href="#">Giới thiệu</a>
     </nav>
@@ -432,7 +459,7 @@ a { color: inherit; text-decoration: none; transition: all .2s ease; }
       <p>Ghi chép của Thu Phương, một người mẹ có con học cấp 1 và cấp 2: cách ba mẹ đồng hành cùng con khi AI đã vào nhà, và cách dùng AI cho gọn việc mỗi ngày.</p>
       <div class="cta">
         <a class="btn btn-main" href="#h-noi-bat">Đọc bài mới nhất</a>
-        <a class="btn btn-line" href="#chu-de">Xem theo chủ đề</a>
+        <a class="btn btn-line" href="#ung-dung-sgk">Ứng dụng SGK</a>
       </div>
     </div>
   </section>
@@ -460,6 +487,59 @@ a { color: inherit; text-decoration: none; transition: all .2s ease; }
           <p class="meta">12 tháng 11, 2026 · 4 phút đọc</p>
         </div>
       </article>
+    </div>
+  </section>
+
+  <section class="section" id="ung-dung-sgk" aria-labelledby="h-sgk">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="h-sgk">Ứng dụng SGK Số</h2>
+        <a href="#">Xem tất cả ứng dụng →</a>
+      </div>
+      <div class="sgk-grid">
+        <a class="sgk-card" href="https://app-toan-lop-6.vercel.app/" target="_blank" rel="noopener">
+          <div>
+            <div class="sgk-head">
+              <span class="sgk-tag"><span class="pulse-dot"></span> Lớp 6</span>
+              <span class="sgk-spec">KẾT NỐI TRI THỨC</span>
+            </div>
+            <h3 class="sgk-title">Toán 6 · Kết nối tri thức</h3>
+            <p class="sgk-desc">Ứng dụng số hoá sách giáo khoa Toán lớp 6, hỗ trợ học sinh tự học, tra cứu lý thuyết và thực hành bài tập trực quan.</p>
+          </div>
+          <div class="sgk-meta">
+            <span class="sgk-highlight"><i>📐</i> Số học & Hình học trực quan</span>
+            <span class="sgk-btn">Mở app ↗</span>
+          </div>
+        </a>
+        <a class="sgk-card" href="https://app-toan-lop-7-blond.vercel.app/" target="_blank" rel="noopener">
+          <div>
+            <div class="sgk-head">
+              <span class="sgk-tag"><span class="pulse-dot"></span> Lớp 7</span>
+              <span class="sgk-spec">KẾT NỐI TRI THỨC</span>
+            </div>
+            <h3 class="sgk-title">Toán 7 · Kết nối tri thức</h3>
+            <p class="sgk-desc">Ứng dụng tương tác Toán lớp 7 theo chương trình mới, tích hợp kiến thức trọng tâm, bài tập và minh hoạ hình học sinh động.</p>
+          </div>
+          <div class="sgk-meta">
+            <span class="sgk-highlight"><i>📐</i> Đại số & Tam giác bằng nhau</span>
+            <span class="sgk-btn">Mở app ↗</span>
+          </div>
+        </a>
+        <a class="sgk-card" href="https://app-toan-lop-8.vercel.app/" target="_blank" rel="noopener">
+          <div>
+            <div class="sgk-head">
+              <span class="sgk-tag"><span class="pulse-dot"></span> Lớp 8</span>
+              <span class="sgk-spec">KẾT NỐI TRI THỨC</span>
+            </div>
+            <h3 class="sgk-title">Toán 8 · Kết nối tri thức</h3>
+            <p class="sgk-desc">Ứng dụng tra cứu và học tập Toán lớp 8, hệ thống lý thuyết, hằng đẳng thức đáng nhớ và định lý hình học dễ hiểu.</p>
+          </div>
+          <div class="sgk-meta">
+            <span class="sgk-highlight"><i>📐</i> Đa thức & Tứ giác nâng cao</span>
+            <span class="sgk-btn">Mở app ↗</span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
