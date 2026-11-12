@@ -24,7 +24,10 @@ const countOf = (slug: string) => posts.filter((p) => p.data.topic === slug).len
 		<main id="noi-dung">
 			<section class="hero">
 				<div class="wrap">
-					<p class="label" id="greeting">Xin chào</p>
+					<div class="hero-badge">
+						<span class="pulse-dot"></span>
+						<span class="label" id="greeting">Chào buổi tối</span>
+					</div>
 					<h1>Cùng con lớn lên <em>thời AI</em>.</h1>
 					<p>
 						Ghi chép của Thu Phương, một người mẹ có con học cấp 1 và cấp 2: cách ba mẹ đồng hành
@@ -43,15 +46,23 @@ const countOf = (slug: string) => posts.filter((p) => p.data.topic === slug).len
 						<div class="wrap">
 							<div class="section-head">
 								<h2 id="h-noi-bat">Bài nổi bật</h2>
+								<a href={`/blog/${featured.id}/`}>Đọc bài này →</a>
 							</div>
 							<article class="feature">
 								<div class="feature-art" aria-hidden="true">
-									<span class="c1" />
-									<span class="c2" />
-									<span class="c3" />
+									<div class="tech-orb-wrapper">
+										<div class="tech-ring r1"></div>
+										<div class="tech-ring r2"></div>
+										<div class="tech-ring r3"></div>
+										<div class="tech-core-glow"></div>
+									</div>
+									<div class="tech-spec">AI CORE // EDITION 2026</div>
 								</div>
 								<div class="feature-body">
-									<p class="label">Mới nhất</p>
+									<p class="label">
+										<span class="pulse-dot"></span>
+										{topicOf(featured.data.topic)?.name || 'Mới nhất'}
+									</p>
 									<h3>
 										<a href={`/blog/${featured.id}/`}>{featured.data.title}</a>
 									</h3>
@@ -76,7 +87,10 @@ const countOf = (slug: string) => posts.filter((p) => p.data.topic === slug).len
 							TOPICS.map((t) => (
 								<a class={`topic ${topicOf(t.slug)!.tile}`} href="/blog/">
 									<b>{t.name}</b>
-									<span>{countOf(t.slug) ? `${countOf(t.slug)} bài` : 'Sắp có bài'}</span>
+									<span>
+										<i class="pulse-dot"></i>
+										{countOf(t.slug) ? `${countOf(t.slug)} bài viết` : 'Sắp ra mắt'}
+									</span>
 								</a>
 							))
 						}
@@ -86,38 +100,57 @@ const countOf = (slug: string) => posts.filter((p) => p.data.topic === slug).len
 
 			{
 				recent.length > 0 && (
-			<section class="section" id="bai-moi" aria-labelledby="h-bai-moi">
-				<div class="wrap">
-					<div class="section-head">
-						<h2 id="h-bai-moi">Bài mới</h2>
-						<a href="/blog/">Tất cả bài viết →</a>
-					</div>
-					<ol class="posts">
-						{
-							recent.map((post) => (
-								<li class="post">
-									<span class="meta">
-										<FormattedDate date={post.data.pubDate} />
-									</span>
-									<div>
-										<h3>
-											<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-										</h3>
-										<p>{post.data.description}</p>
-									</div>
-									{topicOf(post.data.topic) && (
-										<span class={`tag ${topicOf(post.data.topic)!.tile}`}>
-											{topicOf(post.data.topic)!.name}
-										</span>
-									)}
-								</li>
-							))
-						}
-					</ol>
-				</div>
-			</section>
+					<section class="section" id="bai-moi" aria-labelledby="h-bai-moi">
+						<div class="wrap">
+							<div class="section-head">
+								<h2 id="h-bai-moi">Bài mới</h2>
+								<a href="/blog/">Tất cả bài viết →</a>
+							</div>
+							<ol class="posts">
+								{
+									recent.map((post) => (
+										<li class="post">
+											<span class="meta">
+												<FormattedDate date={post.data.pubDate} />
+											</span>
+											<div>
+												<h3>
+													<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+												</h3>
+												<p>{post.data.description}</p>
+											</div>
+											{topicOf(post.data.topic) && (
+												<span class={`tag ${topicOf(post.data.topic)!.tile}`}>
+													{topicOf(post.data.topic)!.name}
+												</span>
+											)}
+										</li>
+									))
+								}
+							</ol>
+						</div>
+					</section>
 				)
 			}
+
+			<section class="section" aria-labelledby="h-email">
+				<div class="wrap">
+					<div class="news">
+						<div>
+							<p class="label" style="margin-bottom: 8px;">
+								<span class="pulse-dot"></span>
+								Bản tin riêng
+							</p>
+							<h2 id="h-email">Nhận bài mới qua email</h2>
+							<p>Mỗi khi có bài mới, Phương gửi một thư ngắn. Không quảng cáo, bỏ đăng ký bất cứ lúc nào.</p>
+						</div>
+						<form onsubmit="return false">
+							<input type="email" placeholder="Email của bạn" aria-label="Email của bạn" autocomplete="email" />
+							<button class="btn btn-main" type="submit">Đăng ký</button>
+						</form>
+					</div>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>

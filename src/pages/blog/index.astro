@@ -21,9 +21,12 @@ const posts = (await getCollection('blog')).sort(
 		<main id="noi-dung">
 			<section class="page-head">
 				<div class="wrap">
-					<p class="label">Blog</p>
+					<p class="label">
+						<span class="pulse-dot"></span>
+						Kho lưu trữ
+					</p>
 					<h1>Tất cả bài viết</h1>
-					<p>{posts.length} bài, mới nhất ở trên cùng.</p>
+					<p>{posts.length} bài viết đã xuất bản, mới nhất ở trên cùng.</p>
 				</div>
 			</section>
 			<section class="section plain">
