@@ -14,6 +14,7 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			topic: z.enum(['cha-me-va-ai', 'hoc-cung-con', 'lam-viec-voi-ai', 'ghi-chep']).optional(),
 		}),
 });
 

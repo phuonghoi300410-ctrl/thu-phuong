@@ -4,13 +4,14 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE, TOPICS, topicOf } from '../consts';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const [featured, ...rest] = posts;
 const recent = rest.slice(0, 5);
+const countOf = (slug: string) => posts.filter((p) => p.data.topic === slug).length;
 ---
 
 <!doctype html>
@@ -24,13 +25,13 @@ const recent = rest.slice(0, 5);
 			<section class="hero">
 				<div class="wrap">
 					<p class="label" id="greeting">Xin chào</p>
-					<h1>Viết chậm lại để <em>nghĩ rõ hơn</em>.</h1>
+					<h1>Cùng con lớn lên <em>thời AI</em>.</h1>
 					<p>
-						Nơi Thu Phương ghi lại những điều học được trong công việc và cuộc sống, viết ngắn gọn,
-						dễ đọc, áp dụng được ngay.
+						Ghi chép của Thu Phương, một người mẹ có con học cấp 1 và cấp 2: cách ba mẹ đồng hành
+						cùng con khi AI đã vào nhà, và cách dùng AI cho gọn việc mỗi ngày.
 					</p>
 					<div class="cta">
-						<a class="btn btn-main" href="#bai-moi">Đọc bài mới nhất</a>
+						<a class="btn btn-main" href="#h-noi-bat">Đọc bài mới nhất</a>
 						<a class="btn btn-line" href="/about/">Về Thu Phương</a>
 					</div>
 				</div>
@@ -65,6 +66,26 @@ const recent = rest.slice(0, 5);
 				)
 			}
 
+			<section class="section" aria-labelledby="h-chu-de">
+				<div class="wrap">
+					<div class="section-head">
+						<h2 id="h-chu-de">Chủ đề</h2>
+					</div>
+					<div class="topics">
+						{
+							TOPICS.map((t) => (
+								<a class={`topic ${topicOf(t.slug)!.tile}`} href="/blog/">
+									<b>{t.name}</b>
+									<span>{countOf(t.slug) ? `${countOf(t.slug)} bài` : 'Sắp có bài'}</span>
+								</a>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			{
+				recent.length > 0 && (
 			<section class="section" id="bai-moi" aria-labelledby="h-bai-moi">
 				<div class="wrap">
 					<div class="section-head">
@@ -84,12 +105,19 @@ const recent = rest.slice(0, 5);
 										</h3>
 										<p>{post.data.description}</p>
 									</div>
+									{topicOf(post.data.topic) && (
+										<span class={`tag ${topicOf(post.data.topic)!.tile}`}>
+											{topicOf(post.data.topic)!.name}
+										</span>
+									)}
 								</li>
 							))
 						}
 					</ol>
 				</div>
 			</section>
+				)
+			}
 		</main>
 		<Footer />
 	</body>
