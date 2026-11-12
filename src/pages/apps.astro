@@ -1,0 +1,99 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SGK_APPS, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="vi" data-theme="light">
+	<head>
+		<BaseHead
+			title={`Ứng dụng SGK Số | ${SITE_TITLE}`}
+			description="Bộ công cụ và ứng dụng số hoá sách giáo khoa Toán cấp 2 hỗ trợ ba mẹ và các con tự học trực quan."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main id="noi-dung">
+			<section class="page-head">
+				<div class="wrap">
+					<p class="label">
+						<span class="pulse-dot"></span>
+						Học cùng con · SGK Số
+					</p>
+					<h1>Ứng dụng Sách Giáo Khoa Số</h1>
+					<p>
+						Các ứng dụng tương tác hỗ trợ học sinh học Toán theo chương trình Kết nối tri thức với cuộc sống.
+						Giúp ba mẹ dễ dàng đồng hành cùng con và học sinh chủ động nắm vững kiến thức.
+					</p>
+				</div>
+			</section>
+
+			<section class="section plain">
+				<div class="wrap">
+					<div class="sgk-grid">
+						{
+							SGK_APPS.map((app) => (
+								<article class="sgk-card">
+									<div>
+										<div class="sgk-head">
+											<span class="sgk-tag">
+												<span class="pulse-dot"></span>
+												{app.grade}
+											</span>
+											<span class="sgk-spec">KẾT NỐI TRI THỨC</span>
+										</div>
+										<h2 class="sgk-title">
+											<a href={app.href} target="_blank" rel="noopener">
+												{app.title}
+											</a>
+										</h2>
+										<p class="sgk-desc">{app.description}</p>
+									</div>
+									<div class="sgk-meta">
+										<span class="sgk-highlight">
+											<i>📐</i> {app.highlight}
+										</span>
+										<a class="btn btn-main" href={app.href} target="_blank" rel="noopener" style="padding: 8px 16px; font-size: 13.5px;">
+											Mở ứng dụng ↗
+										</a>
+									</div>
+								</article>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<section class="section" aria-labelledby="h-huong-dan">
+				<div class="wrap">
+					<div class="section-head">
+						<h2 id="h-huong-dan">Gợi ý dành cho ba mẹ khi đồng hành cùng con</h2>
+					</div>
+					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+						<div class="topic t1" style="min-height: auto; padding: 24px;">
+							<b>1. Tự học theo từng chuyên đề</b>
+							<span style="font-weight: 400; color: var(--muted); font-size: 14.5px; line-height: 1.6; margin-top: 8px;">
+								Mỗi bài học được tổ chức mạch lạc, có lý thuyết cô đọng và bài tập mẫu giúp con chủ động ôn lại trước khi làm bài tập trên lớp.
+							</span>
+						</div>
+						<div class="topic t2" style="min-height: auto; padding: 24px;">
+							<b>2. Trực quan hoá hình học & số học</b>
+							<span style="font-weight: 400; color: var(--muted); font-size: 14.5px; line-height: 1.6; margin-top: 8px;">
+								Giao diện web trực quan giúp con dễ hình dung các khái niệm trừu tượng như hình học phẳng, số âm hay đa thức đại số.
+							</span>
+						</div>
+						<div class="topic t3" style="min-height: auto; padding: 24px;">
+							<b>3. Tiện lợi trên mọi thiết bị</b>
+							<span style="font-weight: 400; color: var(--muted); font-size: 14.5px; line-height: 1.6; margin-top: 8px;">
+								Các app chạy trực tiếp trên trình duyệt máy tính, máy tính bảng hoặc điện thoại, không cần cài đặt phần mềm phức tạp.
+							</span>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

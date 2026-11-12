@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
-import { SOCIAL_LINKS, TOPICS } from '../consts';
+import { SGK_APPS, SOCIAL_LINKS, TOPICS } from '../consts';
 ---
 
 <Layout title="Giới thiệu" description="Đôi dòng về Thu Phương và blog này.">
@@ -16,6 +16,22 @@ import { SOCIAL_LINKS, TOPICS } from '../consts';
 	<p>
 		Cảm ơn bạn đã ghé thăm. Mong rằng những chia sẻ nhỏ ở đây sẽ hữu ích cho bạn và gia đình!
 	</p>
+	<h2>Ứng dụng SGK Số phục vụ học tập</h2>
+	<p>
+		Các ứng dụng trực tuyến hỗ trợ học sinh học Toán theo bộ sách Kết nối tri thức:
+	</p>
+	<ul>
+		{
+			SGK_APPS.map((app) => (
+				<li>
+					<a href={app.href} target="_blank" rel="noopener">
+						<strong>{app.title}</strong>
+					</a>{' '}
+					- {app.description}
+				</li>
+			))
+		}
+	</ul>
 	<h2>Blog viết về</h2>
 	<ul>
 		{TOPICS.map((t) => <li>{t.name}</li>)}

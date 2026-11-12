@@ -1,199 +1,1077 @@
-/* ========== 1. Bảng màu: phẳng, không bóng đổ, không chuyển sắc ========== */
+/* ==========================================================================
+   THU PHUONG - LUXURY TECH DESIGN SYSTEM
+   Phong cach: Sang trong (Luxury) & Cong nghe hien dai (High-Tech / AI)
+   Bang mau: Vang kim Champagne (Auric Gold), Obsidian thien thach, Kinh mo Glassmorphism
+   Font chu: Be Vietnam Pro
+   ========================================================================== */
+
+/* ---------- 1. Bien he thong & Bang mau ---------- */
 :root {
-  --font-ui: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-ui: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-read: var(--font-ui);
-  --wrap: 1120px;
-  --radius: 14px;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --wrap: 1160px;
+  --radius-sm: 8px;
+  --radius: 16px;
+  --radius-lg: 24px;
 }
-[data-theme="light"] {
-  --bg: #FBFAF6;
-  --surface: #FFFFFF;
-  --text: #17181A;
-  --muted: #5F646B;
-  --line: #E4E1D8;
-  --accent: #E8472B;
-  --accent-ink: #FFFFFF;
-  --tile-1: #FFD84D; --tile-1-ink: #17181A;
-  --tile-2: #BFEBD9; --tile-2-ink: #0E3B2C;
-  --tile-3: #D9D2FF; --tile-3-ink: #24195C;
-  --tile-4: #FFCFC2; --tile-4-ink: #5A1C0D;
-  color-scheme: light;
-}
+
+/* --- Giao dien Toi: Obsidian, Vang Kim Champagne & Cyber Luminescence --- */
 [data-theme="dark"] {
-  --bg: #121416;
-  --surface: #1B1E21;
-  --text: #ECEAE4;
-  --muted: #A2A7AE;
-  --line: #2C3136;
-  --accent: #FF7B5C;
-  --accent-ink: #17181A;
-  --tile-1: #4A3F0E; --tile-1-ink: #FFE27A;
-  --tile-2: #12382C; --tile-2-ink: #9FE5C8;
-  --tile-3: #2A2357; --tile-3-ink: #CFC7FF;
-  --tile-4: #4A1F14; --tile-4-ink: #FFC2B2;
+  --bg: #090B10;
+  --bg-dots: rgba(212, 175, 55, 0.08);
+  --surface: rgba(16, 20, 29, 0.72);
+  --surface-solid: #111520;
+  --surface-elevated: #161B28;
+  --surface-card: rgba(18, 23, 34, 0.65);
+  --text: #F1F3F7;
+  --text-pure: #FFFFFF;
+  --muted: #8E98A8;
+  --muted-light: #5B6577;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  
+  /* Luxury Tech Accents */
+  --accent: #E5C378;
+  --accent-gold: #D4AF37;
+  --accent-light: #F7E7B4;
+  --accent-cyan: #38BDF8;
+  --accent-ink: #0A0C11;
+  
+  /* Gradients & Glows */
+  --gold-gradient: linear-gradient(135deg, #FFF1C5 0%, #E5C378 45%, #B38628 100%);
+  --gold-text-gradient: linear-gradient(135deg, #FFFFFF 0%, #F5E5B8 40%, #D4AF37 100%);
+  --tech-gradient: linear-gradient(135deg, #38BDF8 0%, #6366F1 60%, #A855F7 100%);
+  --glass-border: 1px solid rgba(229, 195, 120, 0.22);
+  --glass-border-subtle: 1px solid rgba(255, 255, 255, 0.08);
+  --glow-shadow: 0 0 35px rgba(229, 195, 120, 0.14);
+  --card-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.06);
+  --hero-glow: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.18) 0%, rgba(56, 189, 248, 0.06) 45%, transparent 70%);
+
+  /* Topic Badges & Tiles */
+  --tile-1: rgba(212, 175, 55, 0.08);
+  --tile-1-border: rgba(212, 175, 55, 0.3);
+  --tile-1-ink: #F7E7B4;
+  --tile-1-glow: rgba(212, 175, 55, 0.2);
+
+  --tile-2: rgba(16, 185, 129, 0.08);
+  --tile-2-border: rgba(16, 185, 129, 0.3);
+  --tile-2-ink: #A7F3D0;
+  --tile-2-glow: rgba(16, 185, 129, 0.2);
+
+  --tile-3: rgba(99, 102, 241, 0.08);
+  --tile-3-border: rgba(99, 102, 241, 0.3);
+  --tile-3-ink: #C7D2FE;
+  --tile-3-glow: rgba(99, 102, 241, 0.2);
+
+  --tile-4: rgba(244, 63, 94, 0.08);
+  --tile-4-border: rgba(244, 63, 94, 0.3);
+  --tile-4-ink: #FECDD3;
+  --tile-4-glow: rgba(244, 63, 94, 0.2);
+
   color-scheme: dark;
 }
 
-/* ========== 2. Nền tảng chữ ========== */
+/* --- Giao dien Sang: Bach ngoc (Pearl Ivory), Champagne Titanium & Platinum --- */
+[data-theme="light"] {
+  --bg: #F7F8FA;
+  --bg-dots: rgba(179, 134, 46, 0.08);
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-solid: #FFFFFF;
+  --surface-elevated: #F1F4F8;
+  --surface-card: #FFFFFF;
+  --text: #131720;
+  --text-pure: #090B10;
+  --muted: #596579;
+  --muted-light: #8E9AA8;
+  --line: rgba(19, 23, 32, 0.08);
+  --line-strong: rgba(19, 23, 32, 0.16);
+  
+  /* Luxury Tech Accents */
+  --accent: #B38628;
+  --accent-gold: #B38628;
+  --accent-light: #8A6418;
+  --accent-cyan: #0284C7;
+  --accent-ink: #FFFFFF;
+  
+  /* Gradients & Glows */
+  --gold-gradient: linear-gradient(135deg, #B38628 0%, #D4AF37 50%, #8A6418 100%);
+  --gold-text-gradient: linear-gradient(135deg, #090B10 0%, #5C4514 50%, #B38628 100%);
+  --tech-gradient: linear-gradient(135deg, #0284C7 0%, #4F46E5 60%, #7E22CE 100%);
+  --glass-border: 1px solid rgba(179, 134, 46, 0.25);
+  --glass-border-subtle: 1px solid rgba(19, 23, 32, 0.08);
+  --glow-shadow: 0 8px 30px rgba(179, 134, 46, 0.1);
+  --card-shadow: 0 10px 30px -8px rgba(19, 23, 32, 0.06), 0 0 1px 1px rgba(19, 23, 32, 0.04);
+  --hero-glow: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, rgba(2, 132, 199, 0.04) 45%, transparent 70%);
+
+  /* Topic Badges & Tiles */
+  --tile-1: rgba(212, 175, 55, 0.06);
+  --tile-1-border: rgba(179, 134, 46, 0.22);
+  --tile-1-ink: #785814;
+  --tile-1-glow: rgba(212, 175, 55, 0.15);
+
+  --tile-2: rgba(16, 185, 129, 0.06);
+  --tile-2-border: rgba(16, 185, 129, 0.22);
+  --tile-2-ink: #065F46;
+  --tile-2-glow: rgba(16, 185, 129, 0.15);
+
+  --tile-3: rgba(99, 102, 241, 0.06);
+  --tile-3-border: rgba(99, 102, 241, 0.22);
+  --tile-3-ink: #3730A3;
+  --tile-3-glow: rgba(99, 102, 241, 0.15);
+
+  --tile-4: rgba(244, 63, 94, 0.06);
+  --tile-4-border: rgba(244, 63, 94, 0.22);
+  --tile-4-ink: #9F1239;
+  --tile-4-glow: rgba(244, 63, 94, 0.15);
+
+  color-scheme: light;
+}
+
+/* ---------- 2. Nen tang & Typography ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(circle at 1px 1px, var(--bg-dots) 1px, transparent 0),
+    var(--hero-glow);
+  background-size: 32px 32px, 100% 700px;
+  background-repeat: repeat, no-repeat;
+  background-position: 0 0, top center;
   color: var(--text);
   font-family: var(--font-ui);
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
-  transition: background-color .25s ease, color .25s ease;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color .35s ease, color .35s ease, border-color .35s ease;
+  min-height: 100vh;
 }
-h1, h2, h3 { line-height: 1.25; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
-p { margin: 0; }
-a { color: inherit; text-decoration: none; }
-a:focus-visible, button:focus-visible, input:focus-visible {
-  outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px;
-}
-.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
-.skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: var(--accent-ink); padding: 8px 14px; border-radius: 8px; z-index: 20; }
-.skip:focus { left: 16px; }
-.label { font-size: 13px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
-.meta { font-size: 14px; color: var(--muted); }
 
-/* ========== 3. Thanh đầu trang ========== */
-.header { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); transition: background-color .25s ease; }
-.header .wrap { display: flex; align-items: center; gap: 24px; height: 68px; }
-.logo { font-weight: 800; font-size: 21px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
-.logo i { width: 14px; height: 14px; background: var(--accent); border-radius: 50%; display: block; }
-.nav { display: flex; gap: 4px; margin-left: auto; }
-.nav a { font-size: 15px; font-weight: 500; padding: 8px 14px; border-radius: 999px; color: var(--muted); }
-.nav a:hover { color: var(--text); background: var(--surface); }
-.nav a[aria-current="page"] { color: var(--text); font-weight: 600; }
-.theme-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  height: 42px; padding: 0 14px 0 12px;
-  font: 600 14px var(--font-ui); color: var(--text);
-  background: var(--surface); border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
+h1, h2, h3, h4 {
+  color: var(--text-pure);
+  line-height: 1.22;
+  margin: 0;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  font-weight: 700;
 }
-.theme-btn:hover { border-color: var(--text); }
-.theme-btn svg { width: 18px; height: 18px; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; transition: all .2s ease; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 10px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  z-index: 50;
+  box-shadow: var(--glow-shadow);
+}
+.skip:focus { left: 24px; }
+
+/* Micro-badge & Tech Label */
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  display: inline-block;
+  animation: pulse-glow 2.4s infinite ease-in-out;
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 10px var(--accent); }
+  50% { opacity: 0.45; transform: scale(0.85); box-shadow: 0 0 4px var(--accent); }
+}
+
+.meta {
+  font-size: 14px;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- 3. Thanh dau trang (Header) Glassmorphic ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+  transition: all .3s ease;
+}
+.header .wrap {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  height: 72px;
+}
+.logo {
+  font-weight: 800;
+  font-size: 21px;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-pure);
+}
+.logo i {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: var(--gold-gradient);
+  display: inline-block;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+  transform: rotate(45deg);
+  transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.logo:hover i {
+  transform: rotate(135deg) scale(1.15);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+.nav a {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  color: var(--muted);
+  border: 1px solid transparent;
+  transition: all .2s ease;
+}
+.nav a:hover {
+  color: var(--text-pure);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--line);
+}
+.nav a[aria-current="page"] {
+  color: var(--text-pure);
+  font-weight: 600;
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--glass-border);
+}
+
+/* Theme Button */
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 16px 0 14px;
+  font: 600 13px var(--font-ui);
+  color: var(--text);
+  background: var(--surface-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.theme-btn:hover {
+  border-color: var(--accent);
+  box-shadow: var(--glow-shadow);
+  color: var(--text-pure);
+  transform: translateY(-1px);
+}
+.theme-btn svg { width: 17px; height: 17px; color: var(--accent); }
 .theme-btn .moon { display: none; }
 [data-theme="dark"] .theme-btn .sun { display: none; }
 [data-theme="dark"] .theme-btn .moon { display: block; }
-.theme-btn small { font-size: 11px; font-weight: 500; color: var(--muted); }
+.theme-btn small {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted-light);
+  letter-spacing: 0.04em;
+}
 [data-theme-mode="manual"] .theme-btn small { display: none; }
 
-/* ========== 4. Lời chào ========== */
-.hero { padding: 72px 0 56px; }
-.hero h1 { font-size: clamp(36px, 5.6vw, 64px); font-weight: 800; letter-spacing: -0.03em; max-width: 16ch; margin: 14px 0 20px; }
-.hero h1 em { font-style: normal; color: var(--accent); }
-.hero p:not(.label) { font-size: 20px; color: var(--muted); max-width: 54ch; }
-.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.btn { display: inline-flex; align-items: center; height: 50px; padding: 0 24px; border-radius: 999px; font-weight: 600; font-size: 16px; border: 1px solid transparent; cursor: pointer; font-family: var(--font-ui); }
-.btn-main { background: var(--accent); color: var(--accent-ink); }
-.btn-main:hover { background: var(--text); color: var(--bg); }
-.btn-line { border-color: var(--line); background: transparent; color: var(--text); }
-.btn-line:hover { border-color: var(--text); }
+/* ---------- 4. Hero Section (Loi chao & Dang cap cong nghe) ---------- */
+.hero {
+  padding: 92px 0 68px;
+  position: relative;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--surface-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--glass-border);
+  box-shadow: var(--glow-shadow);
+  margin-bottom: 22px;
+}
+.hero h1 {
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  max-width: 17ch;
+  margin: 0 0 24px;
+  line-height: 1.15;
+}
+.hero h1 em {
+  font-style: normal;
+  background: var(--gold-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  position: relative;
+}
+.hero p:not(.label) {
+  font-size: 20px;
+  color: var(--muted);
+  max-width: 56ch;
+  line-height: 1.7;
+}
 
-/* ========== 5. Bài nổi bật ========== */
-.section { padding: 48px 0; border-top: 1px solid var(--line); }
-.section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; }
-.section-head h2 { font-size: 26px; font-weight: 700; }
-.section-head a { font-size: 15px; font-weight: 600; color: var(--accent); }
-.section-head a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 36px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  transition: all .25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.btn-main {
+  background: var(--gold-gradient);
+  color: #12141A;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+  font-weight: 700;
+}
+.btn-main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+  filter: brightness(1.08);
+}
+.btn-line {
+  background: var(--surface-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  color: var(--text-pure);
+}
+.btn-line:hover {
+  border-color: var(--accent);
+  background: var(--surface-solid);
+  transform: translateY(-2px);
+}
 
-.feature { display: grid; grid-template-columns: 1.1fr 1fr; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.feature-art { background: var(--tile-1); min-height: 340px; position: relative; overflow: hidden; }
-.feature-art span { position: absolute; display: block; }
-.feature-art .c1 { width: 190px; height: 190px; border-radius: 50%; background: var(--accent); left: 12%; top: 18%; }
-.feature-art .c2 { width: 150px; height: 150px; background: var(--tile-1-ink); right: 14%; bottom: 14%; border-radius: 18px; }
-.feature-art .c3 { width: 0; height: 0; border-left: 70px solid transparent; border-right: 70px solid transparent; border-bottom: 120px solid var(--surface); right: 26%; top: 14%; }
-.feature-body { padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
-.feature-body h3 { font-size: clamp(24px, 2.8vw, 34px); font-weight: 700; }
-.feature-body h3 a:hover, .post h3 a:hover { color: var(--accent); }
-.feature-body p:not(.label):not(.meta) { font-family: var(--font-read); font-size: 19px; color: var(--muted); }
+/* ---------- 5. Section Chung ---------- */
+.section {
+  padding: 64px 0;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.section-head h2 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.section-head a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.section-head a:hover {
+  color: var(--text-pure);
+  transform: translateX(4px);
+}
 
-/* ========== 6. Chủ đề ========== */
-.topics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.topic { border-radius: var(--radius); padding: 24px; min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .18s ease; }
-.topic:hover { transform: translateY(-4px); }
-.topic b { font-size: 20px; font-weight: 700; line-height: 1.3; }
-.topic span { font-size: 14px; font-weight: 500; opacity: .85; }
-.t1 { background: var(--tile-1); color: var(--tile-1-ink); }
-.t2 { background: var(--tile-2); color: var(--tile-2-ink); }
-.t3 { background: var(--tile-3); color: var(--tile-3-ink); }
-.t4 { background: var(--tile-4); color: var(--tile-4-ink); }
+/* ---------- 6. Bai noi bat (Luxury Tech Featured Post) ---------- */
+.feature {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  background: var(--surface-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: var(--glass-border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: all .35s ease;
+  position: relative;
+}
+.feature:hover {
+  border-color: var(--accent);
+  box-shadow: var(--glow-shadow), var(--card-shadow);
+  transform: translateY(-3px);
+}
+.feature-art {
+  background: linear-gradient(145deg, rgba(17, 21, 31, 0.95), rgba(8, 10, 16, 0.98));
+  min-height: 360px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+[data-theme="light"] .feature-art {
+  background: linear-gradient(145deg, #1A1F2C, #0F131C);
+}
 
-/* ========== 7. Danh sách bài mới ========== */
-.posts { list-style: none; margin: 0; padding: 0; }
-.post { display: grid; grid-template-columns: 120px 1fr auto; gap: 28px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid var(--line); }
-.post:first-child { padding-top: 0; }
-.post h3 { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
-.post p { font-family: var(--font-read); color: var(--muted); max-width: 62ch; }
-.tag { font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
+/* Abstract AI Tech Orb & Orbital Gyroscope in Feature Art */
+.tech-orb-wrapper {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tech-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(212, 175, 55, 0.35);
+  animation: rotate-ring 28s linear infinite;
+}
+.tech-ring.r1 {
+  width: 240px;
+  height: 240px;
+  border-color: rgba(212, 175, 55, 0.25);
+}
+.tech-ring.r2 {
+  width: 180px;
+  height: 180px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(56, 189, 248, 0.3);
+  animation-duration: 18s;
+  animation-direction: reverse;
+}
+.tech-ring.r3 {
+  width: 120px;
+  height: 120px;
+  border: 1px dotted rgba(212, 175, 55, 0.5);
+  animation-duration: 12s;
+}
+.tech-core-glow {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(229, 195, 120, 0.9) 0%, rgba(212, 175, 55, 0.3) 50%, transparent 75%);
+  box-shadow: 0 0 45px rgba(212, 175, 55, 0.6), 0 0 20px rgba(56, 189, 248, 0.4);
+  position: relative;
+  z-index: 2;
+}
+.tech-spec {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(212, 175, 55, 0.7);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+@keyframes rotate-ring {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
-/* ========== 8. Nhận bài qua email ========== */
-.news { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
-.news h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
-.news p { color: var(--muted); }
-.news form { display: flex; gap: 10px; }
-.news input { flex: 1; min-width: 0; height: 50px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--text); font: 400 16px var(--font-ui); }
-.news input::placeholder { color: var(--muted); }
+.feature-body {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.feature-body h3 {
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.feature-body h3 a:hover {
+  color: var(--accent);
+}
+.feature-body p:not(.label):not(.meta) {
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
 
-/* ========== 9. Chân trang ========== */
-.footer { padding: 36px 0 56px; }
-.footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 28px; }
-.footer nav { display: flex; gap: 20px; font-size: 15px; }
-.footer a:hover { color: var(--accent); }
-.link-btn { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+/* ---------- 6b. Ung dung SGK (Luxury Tech Application Cards) ---------- */
+.sgk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sgk-card {
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  transition: all .35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  text-decoration: none;
+}
+.sgk-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--tech-gradient);
+  opacity: 0.6;
+  transition: opacity .3s ease;
+}
+.sgk-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: var(--glow-shadow), var(--card-shadow);
+}
+.sgk-card:hover::before {
+  opacity: 1;
+}
+.sgk-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.sgk-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(229, 195, 120, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(229, 195, 120, 0.25);
+}
+[data-theme="light"] .sgk-tag {
+  background: rgba(179, 134, 46, 0.08);
+  color: var(--accent);
+  border-color: rgba(179, 134, 46, 0.2);
+}
+.sgk-spec {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--muted-light);
+  text-transform: uppercase;
+}
+.sgk-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-pure);
+  margin: 0 0 12px;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  transition: color .2s ease;
+}
+.sgk-card:hover .sgk-title {
+  color: var(--accent);
+}
+.sgk-desc {
+  font-size: 15.5px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 20px;
+  flex-grow: 1;
+}
+.sgk-meta {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+}
+.sgk-highlight {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sgk-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  transition: transform .2s ease;
+}
+.sgk-card:hover .sgk-btn {
+  transform: translateX(4px);
+  color: var(--text-pure);
+}
 
+/* ---------- 7. Chu de (Luxury Glass Tech Cards) ---------- */
+.topics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.topic {
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  min-height: 165px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  transition: all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.topic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background .3s ease;
+}
+.topic:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow);
+}
+.topic b {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-pure);
+  letter-spacing: -0.015em;
+}
+.topic span {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 
-/* ========== 10. Điện thoại ========== */
+/* Individual Topic Tints with Metallic Glow */
+.topic.t1 { background: var(--tile-1); border-color: var(--tile-1-border); }
+.topic.t1::before { background: var(--gold-gradient); }
+.topic.t1 span { color: var(--tile-1-ink); }
+.topic.t1:hover { box-shadow: 0 10px 30px var(--tile-1-glow); border-color: var(--accent); }
+
+.topic.t2 { background: var(--tile-2); border-color: var(--tile-2-border); }
+.topic.t2::before { background: linear-gradient(135deg, #10B981, #34D399); }
+.topic.t2 span { color: var(--tile-2-ink); }
+.topic.t2:hover { box-shadow: 0 10px 30px var(--tile-2-glow); border-color: #10B981; }
+
+.topic.t3 { background: var(--tile-3); border-color: var(--tile-3-border); }
+.topic.t3::before { background: linear-gradient(135deg, #6366F1, #818CF8); }
+.topic.t3 span { color: var(--tile-3-ink); }
+.topic.t3:hover { box-shadow: 0 10px 30px var(--tile-3-glow); border-color: #6366F1; }
+
+.topic.t4 { background: var(--tile-4); border-color: var(--tile-4-border); }
+.topic.t4::before { background: linear-gradient(135deg, #F43F5E, #FB7185); }
+.topic.t4 span { color: var(--tile-4-ink); }
+.topic.t4:hover { box-shadow: 0 10px 30px var(--tile-4-glow); border-color: #F43F5E; }
+
+/* ---------- 8. Danh sach bai moi (Posts) ---------- */
+.posts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.post {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 32px;
+  align-items: baseline;
+  padding: 30px 20px;
+  border-bottom: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  transition: all .25s ease;
+}
+.post:first-child { padding-top: 10px; }
+.post:hover {
+  background: var(--surface-card);
+  border-color: transparent;
+  transform: translateX(6px);
+}
+.post h3 {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.post h3 a:hover {
+  color: var(--accent);
+}
+.post p {
+  color: var(--muted);
+  max-width: 64ch;
+  line-height: 1.7;
+}
+.tag {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.tag.t1 { background: var(--tile-1); border-color: var(--tile-1-border); color: var(--tile-1-ink); }
+.tag.t2 { background: var(--tile-2); border-color: var(--tile-2-border); color: var(--tile-2-ink); }
+.tag.t3 { background: var(--tile-3); border-color: var(--tile-3-border); color: var(--tile-3-ink); }
+.tag.t4 { background: var(--tile-4); border-color: var(--tile-4-border); color: var(--tile-4-ink); }
+
+/* ---------- 9. Nhan bai qua email (Luxury Tech Newsletter) ---------- */
+.news {
+  background: var(--surface-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 52px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  box-shadow: var(--card-shadow), var(--glow-shadow);
+  position: relative;
+  overflow: hidden;
+}
+.news::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.news h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.news p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+.news form {
+  display: flex;
+  gap: 12px;
+}
+.news input {
+  flex: 1;
+  min-width: 0;
+  height: 52px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface-solid);
+  color: var(--text-pure);
+  font: 400 15px var(--font-ui);
+  transition: all .2s ease;
+}
+.news input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+}
+.news input::placeholder { color: var(--muted-light); }
+
+/* ---------- 10. Chan trang (Footer) ---------- */
+.footer {
+  padding: 48px 0 64px;
+}
+.footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 36px;
+}
+.footer nav {
+  display: flex;
+  gap: 24px;
+  font-size: 15px;
+}
+.footer a {
+  color: var(--muted);
+}
+.footer a:hover {
+  color: var(--accent);
+}
+.link-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Sample ribbon for design/trang-chu.html */
+.sample {
+  background: var(--surface-solid);
+  color: var(--accent);
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 10px 16px;
+}
+
+/* ---------- 11. Trang Doc Bai (BlogPost) & Trang About ---------- */
+.page-head {
+  padding: 68px 0 16px;
+}
+.page-head h1 {
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-top: 12px;
+}
+.page-head p:not(.label) {
+  color: var(--muted);
+  margin-top: 12px;
+  max-width: 58ch;
+  font-size: 19px;
+}
+.section.plain { border-top: 0; }
+
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 24px 88px;
+}
+.article-head {
+  margin-bottom: 44px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.article-head h1 {
+  font-size: clamp(32px, 4.8vw, 50px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 16px 0 16px;
+  line-height: 1.2;
+}
+.article-cover {
+  margin: 0 0 40px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--line);
+}
+.article-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.prose {
+  font-size: 19px;
+  line-height: 1.85;
+  color: var(--text);
+}
+.prose p, .prose ul, .prose ol, .prose blockquote, .prose pre, .prose table {
+  margin: 0 0 1.6em;
+}
+.prose h2, .prose h3, .prose h4 {
+  margin: 2.2em 0 .8em;
+  letter-spacing: -0.02em;
+}
+.prose h2 { font-size: 30px; }
+.prose h3 { font-size: 24px; }
+.prose h4 { font-size: 20px; }
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.prose a:hover {
+  color: var(--text-pure);
+}
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+}
+.prose blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 12px 24px;
+  background: var(--surface-card);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-pure);
+  font-style: italic;
+  margin: 2em 0;
+}
+.prose code {
+  font-family: var(--font-mono);
+  font-size: .88em;
+  padding: 3px 8px;
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--accent);
+}
+.prose pre {
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.65;
+}
+.prose pre > code { all: unset; }
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin: 2em 0;
+}
+.prose th, .prose td {
+  border-bottom: 1px solid var(--line);
+  padding: 12px 14px;
+  text-align: left;
+}
+.prose th {
+  color: var(--text-pure);
+  font-weight: 700;
+  border-bottom: 2px solid var(--line-strong);
+}
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.8em 0;
+}
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 48px;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+  transition: all .2s ease;
+}
+.back:hover {
+  border-color: var(--accent);
+  color: var(--text-pure);
+  transform: translateX(-4px);
+}
+
+/* ---------- 12. Responsive cho Thiet bi Di dong ---------- */
 @media (max-width: 860px) {
-  body { font-size: 17px; }
+  body { font-size: 16px; }
   .nav { display: none; }
   .theme-btn { margin-left: auto; }
-  .hero { padding: 48px 0 40px; }
+  .hero { padding: 56px 0 44px; }
   .feature { grid-template-columns: 1fr; }
-  .feature-art { min-height: 220px; }
-  .feature-body { padding: 28px 24px; }
-  .topics { grid-template-columns: repeat(2, 1fr); }
-  .post { grid-template-columns: 1fr; gap: 6px; }
-  .post .tag { justify-self: start; }
-  .news { grid-template-columns: 1fr; padding: 28px 24px; }
+  .feature-art { min-height: 260px; }
+  .feature-body { padding: 32px 24px; }
+  .sgk-grid { grid-template-columns: 1fr; gap: 16px; }
+  .topics { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .post { grid-template-columns: 1fr; gap: 8px; padding: 24px 12px; }
+  .post .tag { justify-self: start; margin-top: 4px; }
+  .news { grid-template-columns: 1fr; padding: 32px 24px; gap: 24px; }
   .news form { flex-direction: column; }
+  .article { padding: 40px 20px 60px; }
+  .prose { font-size: 17px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; scroll-behavior: auto !important; }
-}
-
-/* ========== 11. Trang danh sách và trang đọc bài ========== */
-.page-head { padding: 56px 0 8px; }
-.page-head h1 { font-size: clamp(32px, 4.6vw, 48px); font-weight: 800; letter-spacing: -0.02em; margin-top: 10px; }
-.page-head p:not(.label) { color: var(--muted); margin-top: 10px; max-width: 54ch; }
-.section.plain { border-top: 0; }
-.article { max-width: 720px; margin: 0 auto; padding: 56px 24px 72px; }
-.article-head { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
-.article-head h1 { font-size: clamp(30px, 4.4vw, 46px); font-weight: 800; letter-spacing: -0.02em; margin: 12px 0 14px; }
-.article-cover { margin: 0 0 36px; }
-.article-cover img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
-.prose { font-family: var(--font-read); font-size: 20px; line-height: 1.8; }
-.prose p, .prose ul, .prose ol, .prose blockquote, .prose pre, .prose table { margin: 0 0 1.4em; }
-.prose h2, .prose h3, .prose h4 { font-family: var(--font-ui); margin: 1.8em 0 .6em; }
-.prose h2 { font-size: 28px; }
-.prose h3 { font-size: 23px; }
-.prose h4 { font-size: 20px; }
-.prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-.prose img { max-width: 100%; height: auto; border-radius: var(--radius); }
-.prose blockquote { border-left: 4px solid var(--accent); padding-left: 20px; color: var(--muted); font-style: italic; }
-.prose code { font-size: .85em; padding: 2px 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
-.prose pre { padding: 20px; border-radius: var(--radius); overflow-x: auto; font-size: 16px; line-height: 1.6; }
-.prose pre > code { all: unset; }
-.prose table { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 16px; }
-.prose th, .prose td { border-bottom: 1px solid var(--line); padding: 10px 8px; text-align: left; }
-.prose hr { border: 0; border-top: 1px solid var(--line); margin: 2em 0; }
-.back { display: inline-block; margin-top: 40px; font-weight: 600; color: var(--accent); }
-.back:hover { text-decoration: underline; text-underline-offset: 4px; }
-@media (max-width: 860px) {
-  .prose { font-size: 18px; }
-  .article { padding-top: 36px; }
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
 }
