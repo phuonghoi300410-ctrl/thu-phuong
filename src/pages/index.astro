@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const [featured, ...rest] = posts;
+const recent = rest.slice(0, 5);
+---
+
+<!doctype html>
+<html lang="vi" data-theme="light">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main id="noi-dung">
+			<section class="hero">
+				<div class="wrap">
+					<p class="label" id="greeting">Xin chào</p>
+					<h1>Viết chậm lại để <em>nghĩ rõ hơn</em>.</h1>
+					<p>
+						Nơi Thu Phương ghi lại những điều học được trong công việc và cuộc sống, viết ngắn gọn,
+						dễ đọc, áp dụng được ngay.
+					</p>
+					<div class="cta">
+						<a class="btn btn-main" href="#bai-moi">Đọc bài mới nhất</a>
+						<a class="btn btn-line" href="/about/">Về Thu Phương</a>
+					</div>
+				</div>
+			</section>
+
+			{
+				featured && (
+					<section class="section" aria-labelledby="h-noi-bat">
+						<div class="wrap">
+							<div class="section-head">
+								<h2 id="h-noi-bat">Bài nổi bật</h2>
+							</div>
+							<article class="feature">
+								<div class="feature-art" aria-hidden="true">
+									<span class="c1" />
+									<span class="c2" />
+									<span class="c3" />
+								</div>
+								<div class="feature-body">
+									<p class="label">Mới nhất</p>
+									<h3>
+										<a href={`/blog/${featured.id}/`}>{featured.data.title}</a>
+									</h3>
+									<p>{featured.data.description}</p>
+									<p class="meta">
+										<FormattedDate date={featured.data.pubDate} />
+									</p>
+								</div>
+							</article>
+						</div>
+					</section>
+				)
+			}
+
+			<section class="section" id="bai-moi" aria-labelledby="h-bai-moi">
+				<div class="wrap">
+					<div class="section-head">
+						<h2 id="h-bai-moi">Bài mới</h2>
+						<a href="/blog/">Tất cả bài viết →</a>
+					</div>
+					<ol class="posts">
+						{
+							recent.map((post) => (
+								<li class="post">
+									<span class="meta">
+										<FormattedDate date={post.data.pubDate} />
+									</span>
+									<div>
+										<h3>
+											<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+										</h3>
+										<p>{post.data.description}</p>
+									</div>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

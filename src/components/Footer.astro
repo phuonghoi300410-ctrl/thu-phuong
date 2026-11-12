@@ -1,0 +1,55 @@
+---
+import { SITE_TITLE } from '../consts';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+	<div class="wrap">
+		<p class="meta">
+			&copy; {year} {SITE_TITLE} · <span id="modeNote"></span>
+			<button class="link-btn" id="autoBtn" type="button" hidden>Về tự động theo giờ</button>
+		</p>
+		<nav aria-label="Liên kết cuối trang">
+			<a href="/rss.xml">RSS</a><a href="/blog/">Bài viết</a><a href="/about/">Giới thiệu</a>
+		</nav>
+	</div>
+</footer>
+<script is:inline>
+	(function () {
+		var root = document.documentElement, T = window.__tpTheme;
+		var btn = document.getElementById('themeBtn'), name = document.getElementById('themeName');
+		var note = document.getElementById('modeNote'), autoBtn = document.getElementById('autoBtn');
+		function paint() {
+			var dark = root.dataset.theme === 'dark', auto = root.dataset.themeMode === 'auto';
+			name.textContent = dark ? 'Tối' : 'Sáng';
+			btn.setAttribute('aria-pressed', String(dark));
+			note.textContent = auto
+				? 'Giao diện tự đổi theo giờ nơi bạn ở (sáng từ 6:00 tới 18:00).'
+				: 'Bạn đang tự chọn giao diện.';
+			autoBtn.hidden = auto;
+		}
+		function set(theme, mode) { root.dataset.theme = theme; root.dataset.themeMode = mode; paint(); }
+		// Nút góc phải: người xem tự chọn, giữ trong suốt lượt xem này
+		btn.addEventListener('click', function () {
+			var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+			try { sessionStorage.setItem(T.KEY, next); } catch (e) {}
+			set(next, 'manual');
+		});
+		autoBtn.addEventListener('click', function () {
+			try { sessionStorage.removeItem(T.KEY); } catch (e) {}
+			set(T.byClock(), 'auto');
+		});
+		// Đang tự động thì kiểm lại mỗi phút, tới 6:00 hoặc 18:00 là tự đổi
+		setInterval(function () {
+			if (root.dataset.themeMode === 'auto' && root.dataset.theme !== T.byClock()) set(T.byClock(), 'auto');
+		}, 60000);
+		var g = document.getElementById('greeting');
+		if (g) {
+			var h = new Date().getHours();
+			g.textContent = h >= 5 && h < 11 ? 'Chào buổi sáng' : h >= 11 && h < 13 ? 'Chào buổi trưa'
+				: h >= 13 && h < 18 ? 'Chào buổi chiều' : h >= 18 && h < 22 ? 'Chào buổi tối'
+				: 'Khuya rồi, đọc chút rồi nghỉ nhé';
+		}
+		paint();
+	})();
+</script>
